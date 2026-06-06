@@ -49,7 +49,12 @@ export function NewsletterSignup() {
           {status === "loading" ? "Joining..." : "Join the Club"}
         </button>
       </form>
-      {status === "success" ? <p className="mt-2 text-sm text-[#7e9c72]">Thanks for joining.</p> : null}
+      {status === "success" ? (
+        <p className="mt-2 text-sm text-[#7e9c72]">
+          Thanks for joining Little Book Club. Keep an eye on your inbox for reading tips, activity
+          ideas, and updates from us.
+        </p>
+      ) : null}
       {status === "error" ? (
         <p className="mt-2 text-sm text-red-600">Could not subscribe right now. Please try again.</p>
       ) : null}
