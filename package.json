@@ -10,7 +10,6 @@
     "clean:cache": "rm -rf .next"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@supabase/supabase-js": "^2.50.5",
     "clsx": "^2.1.1",
     "imagetracerjs": "^1.2.6",
@@ -23,7 +22,6 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/mailchimp__mailchimp_marketing": "^3.0.22",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

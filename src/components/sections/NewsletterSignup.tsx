@@ -11,7 +11,7 @@ export function NewsletterSignup() {
     setStatus("loading");
 
     try {
-      const response = await fetch("/api/mailchimp/subscribe", {
+      const response = await fetch("/api/club/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

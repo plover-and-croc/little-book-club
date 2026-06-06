@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
-import { syncMailchimpContact } from "@/lib/mailchimp";
+import { upsertClubSubscriber } from "@/lib/clubSubscribers";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { getStripeServer } from "@/lib/stripe";
 
@@ -47,12 +47,14 @@ export async function POST(request: Request) {
         .single();
 
       if (order?.marketing_opt_in) {
-        await syncMailchimpContact({
+        await upsertClubSubscriber({
           email: order.email,
-          subscribed: true,
-          tags: ["customer", "checkout", "marketing-opt-in", "website"],
           firstName: order.first_name,
           lastName: order.last_name ?? undefined,
+          phone: order.phone,
+          source: "checkout",
+          tags: ["customer", "checkout", "marketing-opt-in", "website"],
+          orderId: order.id,
         });
       }
     }

@@ -72,14 +72,18 @@ create table if not exists public.orders (
   updated_at timestamptz not null default now()
 );
 
-create table if not exists public.mailchimp_sync_log (
+create table if not exists public.club_subscribers (
   id uuid primary key default gen_random_uuid(),
-  email text not null,
-  event_type text not null,
+  email text not null unique,
+  first_name text,
+  last_name text,
+  phone text,
+  source text not null default 'newsletter',
   tags text[] not null default '{}',
-  status text not null,
-  error_message text,
-  created_at timestamptz not null default now()
+  subscribed boolean not null default true,
+  order_id uuid references public.orders(id) on delete set null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
 );
 
 create table if not exists public.customer_received_books (
@@ -104,6 +108,8 @@ create index if not exists orders_payment_status_idx on public.orders(payment_st
 create index if not exists customer_received_books_customer_id_idx on public.customer_received_books(customer_id);
 create index if not exists customer_received_books_title_idx on public.customer_received_books(title);
 create index if not exists customer_received_books_isbn_idx on public.customer_received_books(isbn);
+create index if not exists club_subscribers_email_idx on public.club_subscribers(email);
+create index if not exists club_subscribers_created_at_idx on public.club_subscribers(created_at desc);
 
 drop trigger if exists trg_customers_updated_at on public.customers;
 create trigger trg_customers_updated_at before update on public.customers
@@ -117,17 +123,21 @@ drop trigger if exists trg_customer_received_books_updated_at on public.customer
 create trigger trg_customer_received_books_updated_at before update on public.customer_received_books
 for each row execute function public.set_updated_at();
 
+drop trigger if exists trg_club_subscribers_updated_at on public.club_subscribers;
+create trigger trg_club_subscribers_updated_at before update on public.club_subscribers
+for each row execute function public.set_updated_at();
+
 alter table public.customers enable row level security;
 alter table public.orders enable row level security;
-alter table public.mailchimp_sync_log enable row level security;
+alter table public.club_subscribers enable row level security;
 alter table public.customer_received_books enable row level security;
 
 drop policy if exists "deny_all_customers" on public.customers;
 create policy "deny_all_customers" on public.customers for all to public using (false) with check (false);
 drop policy if exists "deny_all_orders" on public.orders;
 create policy "deny_all_orders" on public.orders for all to public using (false) with check (false);
-drop policy if exists "deny_all_mailchimp_sync_log" on public.mailchimp_sync_log;
-create policy "deny_all_mailchimp_sync_log" on public.mailchimp_sync_log for all to public using (false) with check (false);
+drop policy if exists "deny_all_club_subscribers" on public.club_subscribers;
+create policy "deny_all_club_subscribers" on public.club_subscribers for all to public using (false) with check (false);
 drop policy if exists "deny_all_customer_received_books" on public.customer_received_books;
 create policy "deny_all_customer_received_books" on public.customer_received_books for all to public using (false) with check (false);
 
