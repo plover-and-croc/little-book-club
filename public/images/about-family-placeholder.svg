@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#f3e6d0"/>
+  <rect x="48" y="48" width="304" height="304" rx="24" fill="#fff8f0" stroke="#e7d8c0" stroke-width="3"/>
+  <circle cx="200" cy="155" r="36" fill="#a8d5e5" stroke="#4a2b1b" stroke-width="3"/>
+  <path d="M130 280c20-48 120-48 140 0" stroke="#7e9c72" stroke-width="28" stroke-linecap="round"/>
+  <rect x="115" y="218" width="48" height="64" rx="8" fill="#f28c38" stroke="#4a2b1b" stroke-width="2"/>
+  <rect x="237" y="218" width="48" height="64" rx="8" fill="#7e9c72" stroke="#4a2b1b" stroke-width="2"/>
+  <text x="200" y="340" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#333333" opacity="0.6">Family photo placeholder</text>
+</svg>

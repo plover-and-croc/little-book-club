@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --lbc-orange: #f28c38;
+  --lbc-cream: #fff8f0;
+  --lbc-charcoal: #333333;
+  --lbc-sage: #7e9c72;
+  --lbc-blue: #a8d5e5;
+  --lbc-sand: #f3e6d0;
+}
+
+@theme inline {
+  --font-sans: var(--font-nunito);
+}
+
+html,
+body {
+  background: var(--lbc-cream);
+  color: var(--lbc-charcoal);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lbc-btn-primary {
+  background-color: var(--lbc-orange);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.lbc-btn-primary:hover {
+  opacity: 0.95;
+}
+
+.lbc-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .lbc-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
