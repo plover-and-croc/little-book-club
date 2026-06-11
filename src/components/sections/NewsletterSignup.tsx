@@ -26,9 +26,9 @@ export function NewsletterSignup() {
   }
 
   return (
-    <div className="w-full min-w-0">
+    <div className="w-full min-w-0 text-center md:text-left">
       <h2 className="text-2xl font-black [font-family:var(--font-baloo)] md:text-3xl">Join the Club</h2>
-      <p className="mt-2 w-full text-sm text-[#333333]/80 md:text-base">
+      <p className="mx-auto mt-2 w-full max-w-xl text-sm text-[#333333]/80 md:mx-0 md:text-base">
         Get reading tips, family activities, age-appropriate recommendations, and Little Book Club
         updates.
       </p>

@@ -114,7 +114,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-8 grid w-full grid-cols-5 gap-4 px-1 sm:gap-6 md:mt-10 md:gap-8 lg:gap-10">
+          <div className="relative mx-auto mt-8 h-[180px] w-[80%] md:hidden">
+            <Image
+              src={heroGalleryImages[2]}
+              alt=""
+              fill
+              sizes="80vw"
+              quality={90}
+              className="object-contain object-bottom"
+              priority
+            />
+          </div>
+          <div className="mt-8 hidden w-full grid-cols-5 gap-4 px-1 sm:gap-6 md:mt-10 md:grid md:gap-8 lg:gap-10">
             {heroGalleryImages.map((src) => (
               <div key={src} className="relative h-[100px] w-full px-1 sm:px-2">
                 <Image
@@ -134,7 +145,7 @@ export default function HomePage() {
 
       <section className="bg-[#dcc9ad] py-2.5 md:py-3">
         <div className="lbc-container">
-          <ul className="flex flex-col items-center gap-5 md:flex-row md:justify-center md:gap-10">
+          <ul className="flex flex-col items-center gap-[40px] md:flex-row md:justify-center md:gap-10">
             {heroTrustItems.map((item) => (
               <li key={item.label} className="flex items-center gap-3 text-sm font-semibold text-[#333333]">
                 <Image
@@ -244,10 +255,10 @@ export default function HomePage() {
                 </p>
                 <p className="mt-2 text-sm text-[#333333]/80">{bundle.description}</p>
                 <Link
-                  href="/checkout"
+                  href={`/checkout?bundle=${bundle.id}`}
                   className="mt-4 inline-block rounded-full border border-[#f28c38] px-5 py-2 text-sm font-bold text-[#f28c38] hover:bg-[#f28c38] hover:text-white"
                 >
-                  Choose bundle
+                  Choose Bundle
                 </Link>
               </div>
             ))}
@@ -272,16 +283,11 @@ export default function HomePage() {
               moments that help them fall in love with reading.
             </p>
             <p className="mt-4 font-semibold text-[#333333]">Fill their shelves. Fuel their imagination.</p>
-            <p className="mt-3 text-[#333333]/85">
-              Whether you are starting small or building a family library that grows with your child,
-              we make it easier to raise readers — affordably, thoughtfully, and with books you can
-              feel good about.
-            </p>
             <Link
-              href="/checkout"
+              href="/about"
               className="mt-6 inline-block lbc-btn-primary rounded-full px-6 py-3"
             >
-              Build Your Bundle
+              More About Us
             </Link>
           </div>
           <Image
@@ -289,7 +295,7 @@ export default function HomePage() {
             alt="Children reading outside"
             width={560}
             height={560}
-            className="h-auto w-full max-w-md object-contain md:ml-auto"
+            className="mx-auto h-auto w-[80%] object-contain md:ml-auto md:w-full md:max-w-md"
           />
         </div>
       </section>

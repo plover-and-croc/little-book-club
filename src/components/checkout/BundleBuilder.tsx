@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import { BuilderSectionHeader } from "@/components/checkout/BuilderSectionHeader";
 import { PricePerBook } from "@/components/ui/PricePerBook";
 import {
@@ -66,10 +67,20 @@ function selectionClass(selected: boolean): string {
     : "border-[#f3e6d0] bg-white hover:border-[#e8cdb0]";
 }
 
+const bundleIds = new Set(bundles.map((bundle) => bundle.id));
+
 export function BundleBuilder() {
+  const searchParams = useSearchParams();
   const [form, setForm] = useState<FormState>(initialState);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const bundle = searchParams.get("bundle");
+    if (bundle && bundleIds.has(bundle as (typeof bundles)[number]["id"])) {
+      setForm((prev) => ({ ...prev, bundleId: bundle }));
+    }
+  }, [searchParams]);
 
   const selectedBundle = useMemo(
     () => bundles.find((bundle) => bundle.id === form.bundleId),

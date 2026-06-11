@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { BundleBuilder } from "@/components/checkout/BundleBuilder";
 import { siteUrl } from "@/lib/site";
 
@@ -12,7 +13,9 @@ export default function CheckoutPage() {
   return (
     <section className="section-padding">
       <div className="lbc-container">
-        <BundleBuilder />
+        <Suspense fallback={<p className="text-center text-[#333333]/80">Loading bundle builder…</p>}>
+          <BundleBuilder />
+        </Suspense>
       </div>
     </section>
   );

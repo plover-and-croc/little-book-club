@@ -36,6 +36,15 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/lbc-logo.png",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, must-revalidate",
+          },
+        ],
+      },
+      {
         source: "/_next/image",
         headers: [
           {
