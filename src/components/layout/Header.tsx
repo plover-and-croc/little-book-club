@@ -80,9 +80,9 @@ export function Header() {
       {menuOpen ? (
         <nav
           id="mobile-nav"
-          className="border-t border-orange-100/80 bg-[#fff8f0] px-4 py-4 lg:hidden"
+          className="border-t border-orange-100/80 bg-white px-4 py-4 lg:hidden"
         >
-          <ul className="space-y-3 text-sm font-semibold">
+          <ul className="space-y-3 text-center text-sm font-semibold">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link

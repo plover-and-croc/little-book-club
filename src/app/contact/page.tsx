@@ -11,18 +11,18 @@ export const metadata: Metadata = {
 const contactLinks = [
   {
     label: "Email us",
-    href: "mailto:hello@littlebookclub.com",
+    href: "#",
     description: "Questions about bundles, delivery, or your order.",
   },
   {
     label: "Facebook",
-    href: "https://facebook.com/",
+    href: "#",
     description: "Follow along and send us a message.",
   },
   {
     label: "WhatsApp",
-    href: "https://wa.me/",
-    description: "Chat with us — placeholder link for now.",
+    href: "#",
+    description: "Chat with us.",
   },
 ] as const;
 
@@ -47,8 +47,6 @@ export default function ContactPage() {
               <Link
                 key={item.label}
                 href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="flex h-full flex-col rounded-2xl border border-[#f3e6d0] bg-white p-5 text-center shadow-sm transition hover:border-[#f28c38]"
               >
                 <span className="text-lg font-bold text-[#f28c38]">{item.label}</span>

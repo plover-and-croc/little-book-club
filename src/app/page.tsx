@@ -114,7 +114,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative mx-auto mt-8 h-[180px] w-[80%] md:hidden">
+          <div className="relative mx-auto mt-4 h-[180px] w-[80%] md:hidden">
             <Image
               src={heroGalleryImages[2]}
               alt=""
@@ -145,7 +145,7 @@ export default function HomePage() {
 
       <section className="bg-[#dcc9ad] py-2.5 md:py-3">
         <div className="lbc-container">
-          <ul className="flex flex-col items-center gap-[40px] md:flex-row md:justify-center md:gap-10">
+          <ul className="flex flex-col items-center gap-2 md:flex-row md:justify-center md:gap-10">
             {heroTrustItems.map((item) => (
               <li key={item.label} className="flex items-center gap-3 text-sm font-semibold text-[#333333]">
                 <Image
@@ -268,7 +268,7 @@ export default function HomePage() {
 
       <section className="section-padding bg-[#f3e6d0]/60">
         <div className="lbc-container grid items-center gap-10 md:grid-cols-2">
-          <div>
+          <div className="order-2 text-center md:order-1 md:text-left">
             <h2 className="text-3xl font-black [font-family:var(--font-baloo)]">
               Building Home Libraries Children Love
             </h2>
@@ -295,7 +295,7 @@ export default function HomePage() {
             alt="Children reading outside"
             width={560}
             height={560}
-            className="mx-auto h-auto w-[80%] object-contain md:ml-auto md:w-full md:max-w-md"
+            className="order-1 mx-auto h-auto w-[60%] object-contain md:order-2 md:ml-auto md:w-full md:max-w-md"
           />
         </div>
       </section>
